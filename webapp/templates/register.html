@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block content %}
+<form action="register" method="POST">
+    {% csrf_token %}
+<center>
+    <p class="pad"><input type="text" name="fname" class = "inbox" placeholder = "first name" > <br></p>
+    <p class="pad"><input type="text"  name="lname" class = "inbox" placeholder = "last name"> <br></p>
+    <p class="pad"><input type="email"  name="email" class = "inbox" placeholder = "Email"> <br> </p>
+    <p class="pad"><input type="text"  name="uname" class = "inbox" placeholder = "User Name"> <br></p>
+    <p class="pad"><input type="Password"  name="pass" class = "inbox" placeholder = "Password"> <br></p>
+    <p class="pad"><input type="Password"  name="pass1" class = "inbox" placeholder = "re-enter password"> <br> </p>
+    <input type="submit" value ="register" >
+</center>
+</form>
+<div>
+    <center> {% for message in messages %}
+        {{message}}
+      {% endfor %}
+    </center>
+</div>
+{% endblock %}
