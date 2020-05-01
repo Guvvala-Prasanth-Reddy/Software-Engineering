@@ -29,5 +29,5 @@ Webapp using Django
 
 ## The credentials for the project email will be shared in the whatsapp group ##
 
-## Kindly look through the requiremtents.txt##
+## Kindly look through the requiremtents.txt ##
 To cross check whether all of them are installed in your virtualenv run "pip freeze > requirements.txt" inside the venv and cross check the installed modules 
