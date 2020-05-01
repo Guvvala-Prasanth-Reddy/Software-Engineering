@@ -23,8 +23,8 @@ Webapp using Django
 ## Steps to run the project
 	1:  After performing the above steps migrate to webapp directory 
 	2:  execute the following commands :
-										* python manage.py makemigrations
-										* python manage.py migrate
-										* python manage.py runserver [ It starts the server on the port 5432 and address is the local host adddress i.e 127.0.0.1 ]
+						* python manage.py makemigrations
+						* python manage.py migrate
+						* python manage.py runserver [ It starts the server on the port 5432 and address is the local host adddress i.e 127.0.0.1 ]
 
 ## The credentials for the project email will be shared in the whatsapp group ##
