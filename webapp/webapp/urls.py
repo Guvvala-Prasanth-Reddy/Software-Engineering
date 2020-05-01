@@ -18,6 +18,8 @@ from django.urls import path , include
 
 urlpatterns = [
     path('',include('authentication.urls')),
+    path('course/',include('courses.urls')),
+    path('home/prasanth/Django/projects/webapp/media/' , include('courses.urls')),
     path('admin/', admin.site.urls)
 ]
  
