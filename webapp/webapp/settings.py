@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE'    : 'django.db.backends.postgresql',
-        'NAME'      : 'project',
-        'USER'      :'postgres',
-        'PASSWORD'  :'7229',
+        'NAME'      : '',
+        'USER'      :'',
+        'PASSWORD'  :'',
         'HOST'      :'localhost'
     }
 }
@@ -132,8 +132,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
 EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST          = 'smtp.gmail.com'
-EMAIL_HOST_USER     = 'smtpadharva@gmail.com'
-EMAIL_HOST_PASSWORD = 'Abcd@1234'
+EMAIL_HOST          = ''
+EMAIL_HOST_USER     = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS       = True
 EMAIL_PORT          = 587
