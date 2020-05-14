@@ -1,5 +1,5 @@
 body{
-	background-color: darkgreen;
+	background-color: rgb(255, 255, 0);
 	font-family: sans-serif;
 
 }
@@ -7,7 +7,7 @@ body{
 
 
 .menu-bar{
-	background: green;
+	background : slategrey;
 	text-align: center;
 }
 

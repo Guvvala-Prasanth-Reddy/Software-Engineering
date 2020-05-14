@@ -50,20 +50,27 @@ def show_content(request):
     var = var.split('/')
     var = var[-1]
     path = settings.MEDIA_ROOT+"/"
+    print(path)
     resource = content.objects
+     
     if( var == "NT"):
         resource = resource.filter(Notes = "True" , semester = sem , course_name = coursename , course_code = coursecode )
+        h = "Notes"
     elif( var == "QP"):
+        h = "Question Paper"
         resource = resource.filter(QP = "True" , semester = sem , course_name = coursename , course_code = coursecode )
     elif ( var == "TB"):
+        h = "Text-Book"
         resource = resource.filter(Textbook = "True" , semester = sem , course_name = coursename , course_code = coursecode )
     else :
         resource = None
-    return render( request , 'showcontent.html' , {'resource':resource , 'path' :path})
+
+    return render( request , 'showcontent.html' , {'resource':resource , 'path' :path , 'h' :h })
 
 
 def generate_pdf(request):
     k = request.path
+    print(k)
     pdf = open(k , 'rb')
     return FileResponse(pdf,  content_type = 'application/pdf')
 

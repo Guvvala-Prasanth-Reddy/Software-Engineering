@@ -1,11 +1,12 @@
 {% extends 'index.html' %}
- 
+{% load static %}
 {% block content %}
 <form action="login" method="POST">
     {% csrf_token %}
 
     <!DOCTYPE html>
 <html>
+	<head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
@@ -13,12 +14,10 @@
 	
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</h1>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
 
-
-
-<br></br>
+</head>
 
 <body>
 	<center>
@@ -29,7 +28,7 @@
 
 	<p class="pad"><input class="inbox" type="text" name="uname" placeholder="user name"> </p>
 	<p class="pad "><input class="inbox" type="Password" name="pass" placeholder="Password" ></p>
-	<input type="submit" value="login">
+	<input type="submit" value="login" class="btn-info">
 </div>
 </body>
 </center>
