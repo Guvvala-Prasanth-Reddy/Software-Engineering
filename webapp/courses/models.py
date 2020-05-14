@@ -12,7 +12,7 @@ class course(models.Model):
 class content(models.Model): 
     course_name = models.CharField(max_length = 50)
     semester    = models.IntegerField()
-    content     = models.FileField(upload_to = 'files')
+    content     = models.FileField()
     QP          = models.BooleanField(default = False)
     course_code = models.CharField(max_length = 10)
     rating      = models.IntegerField()

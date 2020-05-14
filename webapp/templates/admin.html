@@ -1,5 +1,8 @@
+{% load static %}
 <html>
 <head>
+	<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 	<title>Admin Site </title>
 </head>
 <style type="text/css">
@@ -50,6 +53,9 @@ ul li{
 	border-bottom: 2px solid grey;
 	 list-style-type: none;
 }
+{% load ratings %}
+
+{% ratings object %}
 
 
 
@@ -126,6 +132,9 @@ ul li{
    
   </div>
 
+  
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 
 
 

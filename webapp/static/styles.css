@@ -1,5 +1,5 @@
 body{
-	background-color: darkgreen;
+	background-color: white;
 	font-family: sans-serif;
 
 }
@@ -7,7 +7,7 @@ body{
 
 
 .menu-bar{
-	background: green;
+	background:darkslategray;
 	text-align: center;
 	font-weight: bold;
 }
@@ -99,7 +99,7 @@ margin-right: 8px;
 	display: block;
 	margin-top: -40px;
 	margin-left: 140px;
-	background: rgb(0,100,0);
+	background: rgb(189,183,107);
 
 
 

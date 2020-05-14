@@ -1,11 +1,11 @@
 body{
-	background-color: darkgreen;
+	background-color: white;
 	font-family: sans-serif;
 }
 
 
 .menu-bar{
-	background-color: green;
+	background: darkslategray;
 	text-align: center;
 	font-weight: bold;
 }
@@ -52,7 +52,7 @@ margin-right: 8px;
 
 	display: block;
 	position: absolute;
-	background-color: rgb(0,100,0);
+	background-color: rgb(0,100,0) ;
 	margin-top: 15px;
 	margin-left: -15px;
 }
@@ -62,8 +62,6 @@ margin-right: 8px;
 	display: block;
 	margin: 10px;
 }
-
-
 
 .menu-bar ul li:hover  .sub-menu ul li {
 
@@ -82,4 +80,35 @@ margin-right: 8px;
 .menu-bar ul li:hover  .sub-menu ul li a:hover {
 	color: #b2ff00;
 }
+.container-fluid { max-width: 1200px;padding-top: 100px;  }
 
+header {
+	background: #563d7c;
+	padding: 2em 1em;
+	color: #fff;
+	margin-bottom: 2em;
+	h1 {
+		font-weight: 200;
+	}
+}
+
+.card {
+	background: #fff;
+	box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+	img {
+		width: 100%;
+	}
+}
+
+[class*="row"] {
+	margin-bottom: 1em;
+  justify-content: center;
+}
+
+[class*="col-"] {
+	background: #efefef;
+	border: 10px solid white;
+	padding-top: .75rem;
+	padding-bottom: .75rem;
+	
+}

@@ -87,7 +87,8 @@ def specialuser(request):
         return render( request , 'successful.html' , {'messages' : ['requested successfully'], 'color' :'red'} )
 
 def show_requests(request):
-    d = request.path.split('/')[-1]
+    d = request.path.split('/')
+    print(d[-1])
     resp = User.objects.filter(username = d)
     if( resp.values('is_staff') ): 
         data = speical_user_access.objects.all()
@@ -125,4 +126,6 @@ class ActivateAccountView(View):
             messages.info(request,'Account Activated Successfully')
             return redirect('login')
 
-        return render(request,'activation_failed.html',status=401)        
+        return render(request,'activation_failed.html',status=401)       
+
+

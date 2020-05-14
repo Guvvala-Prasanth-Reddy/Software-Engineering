@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'star_ratings',
+    
 ]
 
 MIDDLEWARE = [
@@ -78,9 +80,9 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE'    : 'django.db.backends.postgresql',
-        'NAME'      : '',
-        'USER'      :'',
-        'PASSWORD'  :'',
+        'NAME'      : 'project',
+        'USER'      :'postgres',
+        'PASSWORD'  :'7229',
         'HOST'      :'localhost'
     }
 }
@@ -132,8 +134,8 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
 EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST          = ''
-EMAIL_HOST_USER     = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST          = 'smtp.gmail.com'
+EMAIL_HOST_USER     = 'smtpadharva@gmail.com'
+EMAIL_HOST_PASSWORD = 'Abcd@1234'
 EMAIL_USE_TLS       = True
 EMAIL_PORT          = 587
