@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'courses.apps.CoursesConfig',
+    'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,9 +129,11 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 STATIC_URL = '/static/'
 
-
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='smtpadharva@gmail.com'
-EMAIL_HOST_PASSWORD='Abcd@1234'
-EMAIL_USE_TLS=True
-EMAIL_PORT=587
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
+EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST          = 'smtp.gmail.com'
+EMAIL_HOST_USER     = 'smtpadharva@gmail.com'
+EMAIL_HOST_PASSWORD = 'Abcd@1234'
+EMAIL_USE_TLS       = True
+EMAIL_PORT          = 587

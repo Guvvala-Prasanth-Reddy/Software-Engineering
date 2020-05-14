@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from .models import speical_user_access
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
@@ -19,6 +20,7 @@ def home(request):
 
 def dash(request):
     return render(request, 'dash.html')
+    
 
 
 def login(request):
@@ -26,18 +28,13 @@ def login(request):
         username    = request.POST['uname']
         password    = request.POST['pass']
         user        = auth.authenticate(username=username,password=password)
-        if( user is not None):
-            if user.is_active:
-                auth.login(request,user)
-                return redirect('dash')
-            else:
-                messages.info(request,'Please verify your email')
-                return redirect('login')
+        if( user is not None ):
+            auth.login(request,user)
+            return redirect('dash')
         else:
             messages.info(request,'Invalid Credentials')
             return redirect('login')
     return render(request,'login.html')
-
 
 
 def logout(request):
@@ -57,11 +54,11 @@ def register(request):
                 messages.info(request,'user name exists')
                 return redirect('register')
             else:
-                user = User.objects.create_user(username = username , password = password1 , email = email , first_name = first_name , last_name = last_name,is_active=False)
+                user = User.objects.create_user(username = username , password = password1 , email = email , first_name = first_name , last_name = last_name)
                 user.save()
                 current_site=get_current_site(request)
                 email_subject='Activate your Adharva Account'
-                message=render_to_string('activate_account.html',
+                message = render_to_string('activate_account.html',
                 {
                     'user':user,
                     'domain':current_site,
@@ -69,7 +66,6 @@ def register(request):
                     'token':generate_token.make_token(user)
                 }
                 )
-
                 email_message=EmailMessage(email_subject,message,settings.EMAIL_HOST_USER,[email])
                 email_message.send()
                 messages.info(request,'Activation link is sent to your registered email')
@@ -81,6 +77,38 @@ def register(request):
         return render(request,'register.html')
 
 
+def specialuser(request):
+    uname = request.path.split('/')[-1]
+    if( speical_user_access.objects.filter(user_name = uname).exists()):
+        return render(request , 'successful.html' , {'messages' : ['request already exists' , 'you are not permitted to put multiple requests'] , 'color':'red'})
+    else:
+        spec = speical_user_access(user_name = uname)
+        spec.save()
+        return render( request , 'successful.html' , {'messages' : ['requested successfully'], 'color' :'red'} )
+
+def show_requests(request):
+    d = request.path.split('/')[-1]
+    resp = User.objects.filter(username = d)
+    if( resp.values('is_staff') ): 
+        data = speical_user_access.objects.all()
+        dat = []
+        for i in data:
+            dat.append(i.user_name)
+        return render( request , 'showrequests.html' , {'data' : dat , 'user' : d } )
+    else:
+        return render( request , 'successful.html' , {'messages' :['Dont try silly stuff'],'color' : 'red' })
+
+
+def give_access(request):
+    d = request.path.split('/')
+    u = User.objects.filter(username = d[-2])
+    if( u.values('is_staff')):
+        User.objects.filter(username = d[-3]).update(is_superuser = True)
+        speical_user_access.objects.filter(user_name = d[-3]).delete()
+        return render( request , 'successful.html' , {'messages' : ['Given access'] , 'color' : 'green'})
+    else:
+        return render( request , 'successful.html' , {'messages' :['Dont try silly stuff'],'color' : 'red' })
+
 
 
 class ActivateAccountView(View):
@@ -91,10 +119,10 @@ class ActivateAccountView(View):
         except Exception as identifier:
             user=None
         
-        if user is not None and generate_token.check_token(user,token):
+        if (user is not None and generate_token.check_token(user,token)):
             user.is_active=True
             user.save()
             messages.info(request,'Account Activated Successfully')
             return redirect('login')
 
-        return render(request,'activation_failed.html',status=401)
+        return render(request,'activation_failed.html',status=401)        

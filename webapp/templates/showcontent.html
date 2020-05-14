@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<style>
+    .continer{padding : 30px;}
+</style>
+    </head>
+    <body>
+        {% csrf_token %}
+        {%  if user.is_authenticated %}
+        {% for i in resource %}
+            <div class = "continer">
+                    <a  href = {{path}}{{i.content}} > {{i.content}} </a> 
+            </div>
+        {% endfor %}
+        {% endif %}
+    </body>
+    </html>
