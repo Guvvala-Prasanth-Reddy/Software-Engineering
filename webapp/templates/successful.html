@@ -1,7 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Dashboard</title>
+        <link rel="stylesheet"  href="{% static 'dash.css' %}">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+<body>    
+<section id="sidemenu">
+    <a href="#"><img src="{% static 'adharva_t.png' %}" height="280"></a>
+    <ul>
+        <li><a href="/login"><i class="fa fa-home" aria-hidden="true"></i>Login</a></li>
+        <li><a class="/register"><i class="fa fa-book" aria-hidden="true"></i>Register</a></li>
+    </ul>
+</section>
+
     {% for i in messages %}
-        <h1 style="color:{{color}};"> {{i}}</h1>
+    <center>
+        <h1 style="color:black;"> {{i}}</h1>
+    </center>
     {% endfor %}
+
     <meta http-equiv = "refresh" content="2;url=http://127.0.0.1:8000/dash" />
+</body>    
 </html>

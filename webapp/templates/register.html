@@ -1,21 +1,32 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
 <form action="register" method="POST">
     {% csrf_token %}
-<center>
-    <p class="pad"><input type="text" name="fname" class = "inbox" placeholder = "first name" > <br></p>
-    <p class="pad"><input type="text"  name="lname" class = "inbox" placeholder = "last name"> <br></p>
-    <p class="pad"><input type="email"  name="email" class = "inbox" placeholder = "Email"> <br> </p>
-    <p class="pad"><input type="text"  name="uname" class = "inbox" placeholder = "User Name"> <br></p>
-    <p class="pad"><input type="Password"  name="pass" class = "inbox" placeholder = "Password"> <br></p>
-    <p class="pad"><input type="Password"  name="pass1" class = "inbox" placeholder = "re-enter password"> <br> </p>
-    <input type="submit" value ="register" class="btn-primary">
-</center>
+    <body>
+        <div class=signbox>
+        <img src="{% static 'avatar.png' %}" class="avatar">  
+        <h1>SignUp Here</h1>
+            <p>First Name</p>
+            <input type="text" name="fname" placeholder="Enter first name">
+            <p>Last Name</p>
+            <input type="text" name="lname" placeholder="Enter last name">
+            <p>Email</p>
+            <input type="text" name="email" placeholder="Enter your e-mail id">
+            <p>Username</p>
+            <input type="text" name="uname" placeholder="Enter your Username">
+            <p>Password</p>
+            <input type="Password" name="pass" placeholder="Enter Password">
+            <p>Re-Enter Password</p>
+            <input type="Password" name="pass1" placeholder="Re-Enter Password">
+            <input type="submit" name="" value="SignUp">
+        </div>
 </form>
 <div>
-    <center> {% for message in messages %}
+    <center>
+    {% for message in messages %}
         {{message}}
-      {% endfor %}
+    {% endfor %}
     </center>
 </div>
 {% endblock %}
