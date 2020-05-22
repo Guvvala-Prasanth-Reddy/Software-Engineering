@@ -1,0 +1,70 @@
+body{
+			background-color: #D2CECE;
+		}
+		.heading{
+		 border-top-left-radius: 20px;
+		 background-color: #57B846;
+		 color: white;
+		 font-weight: bold;
+		 font-size: 40px;
+		 padding: 40px 80px 40px 80px;
+		 border-top-right-radius: 20px;
+		}
+		.form{
+		 margin-left:auto;
+		 width: 548px;
+		 height: auto;
+		 margin-right: auto;
+		 background-color: white;
+		 border-radius: 20px;
+		}
+		.pad{
+		 padding: 0px 40px 0px 60px;
+		 font-size: 20px;	
+		}
+		input{
+			background-color: #e5e3e3;
+		}
+		button{
+		 background-color: #57B846;
+		 color: white;
+		 font-weight: bold;
+		 height: 60px;
+		 width: 440px;
+		 border-radius: 30px;
+		 font-size: 20px;
+		 border-color: #57B846;
+		 border-style: solid;
+
+		}
+		::placeholder{
+			color: #234f1c;
+			font-weight: bold;
+			font-size: 15px;
+		}
+		.classa{
+			color: #D2CECE;
+			text-align: center;
+			font-size: 15px
+		}
+		.classb{
+			color: #57B846;
+			text-align: center;
+			font-size: 20px
+		}
+		.inbox{
+			height: 35px;
+			width: 390px;
+			border-radius: 30px;
+			padding: 10px 25px 10px 25px;
+			margin-left:auto;
+			margin-right: auto;
+			color: #1a3a15;
+			font-size: 20px;
+			border-color:#e5e3e3;
+			border-style: solid;
+		}
+		.SIGIN{width: 100px;
+			background-color: white;
+			color: #57B846;
+			border:none;}

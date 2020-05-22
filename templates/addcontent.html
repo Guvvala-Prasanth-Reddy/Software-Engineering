@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>upload content</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        {% csrf_token %}
+        {% if user.is_superuser %}
+            <center>
+                <div class = "jumbotron">
+                    <h1 class="display-4"> Upload the content </h1>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <table>
+                            {{form.as_table}}
+                        </table>
+                        <input type="submit" class="btn btn-primary btn-lg" name = 'register'> 
+                </form>
+
+                </div>
+            </center>
+        {% else %}
+            <h1 style = "color:red;"> You are not authorised to add content kindly contact the administrator</h1>
+            <a href = "/dash"> GO Back</a>
+        {% endif %}
+    </body>
+</html>

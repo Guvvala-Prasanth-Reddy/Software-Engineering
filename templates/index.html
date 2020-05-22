@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<title> ADHARVA </title>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'style2.css' %}">
+
+<body>
+        {% block content %}
+        {% comment %}  {% if user.is_authenticated  and user.is_superuser %}
+        <center>
+            <h1> Welcome , {{user.first_name}}</h1>
+            <a href="logout"> Logout  </a> <br>
+        </center>
+        {% else  %}
+        {% endcomment %}
+        <div class=indexbox>
+            <img src="{% static 'avatar.png' %}" class="avatar">  
+            <h1>Get Started</h1>
+            <br>
+            <button onclick="window.location.href ='http://127.0.0.1:8000/login'" class="submit1">  Login  </button> 
+            <br>
+            <br>
+            <button onclick="window.location.href='http://127.0.0.1:8000/register'" class="submit2"> Register</a> </button>
+        </div>
+            {% comment %}  {% endif %} {% endcomment %}
+        {% endblock %}
+</body>
+</head>
+</html>

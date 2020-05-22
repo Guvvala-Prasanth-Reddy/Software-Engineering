@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<form action="register" method="POST">
+    {% csrf_token %}
+    <body>
+        <div class=signbox>
+        <img src="{% static 'avatar.png' %}" class="avatar">  
+        <h1>SignUp Here</h1>
+            <p>First Name</p>
+            <input type="text" name="fname" placeholder="Enter first name">
+            <p>Last Name</p>
+            <input type="text" name="lname" placeholder="Enter last name">
+            <p>Email</p>
+            <input type="text" name="email" placeholder="Enter your e-mail id">
+            <p>Username</p>
+            <input type="text" name="uname" placeholder="Enter your Username">
+            <p>Password</p>
+            <input type="Password" name="pass" placeholder="Enter Password">
+            <p>Re-Enter Password</p>
+            <input type="Password" name="pass1" placeholder="Re-Enter Password">
+            <p>Semester</p>
+            <input type = "number" name = "semester" min = "1" max="8" placeholder="semester" >
+            <br>
+            <br>
+            <input type="submit" name="" value="SignUp">
+        </div>
+</form>
+<div>
+    <center>
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    </center>
+</div>
+{% endblock %}

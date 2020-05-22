@@ -1,0 +1,59 @@
+{% load static %}
+{% load ratings %}
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel = "stylesheet" href="{% static 'simple-rating.css' %}">
+        <style>
+            .continer{padding : 30px;}
+        </style>
+        <link rel="stylesheet"  href="{% static 's.css' %}">
+    </head>
+    <body>
+        <h1 style="text-align: center; padding-top:50px;"> {{h}}s</h1>
+        {% csrf_token %}
+        {%  if user.is_authenticated %}
+        <div class="container-fluid">
+        <div class="row">
+            {% for i in resource %}
+                    <div class="col-lg-4">
+                    <div class="card">
+                    <img class="card-img-top" src="//placehold.it/350x350" alt="Card image cap">
+                            <div class="card-block">
+                                <h4 class="card-title">{{ i.content.name }} </h4>
+                                <h hidden id = "rat" >{{i.rating}}</h>
+                                
+                                {% ratings i %}
+                                <br>
+                                <br>
+                                <a href="{{path}}{{i.content}}" target="_blank" class="btn btn-primary">Download</a>
+                            </div>
+                        </div>
+                    </div>        
+            {% endfor %}
+         </div>
+         </div>   
+        {% endif %}
+    </body>
+    </html>
+    <!--
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"  crossorigin="anonymous">
+        </script>
+        <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+   <script type = "text/javascript ">
+    </script> 
+
+
+<script src = "{% static 'js/simple-rating.js' %}" ></script>
+<script type="text/javascript"> 
+    $(document).ready(function(){
+    $('.rating').rating();
+    console.log("2");
+    });
+    </script>
+    -->

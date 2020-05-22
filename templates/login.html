@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<form action="login" method="POST">
+    {% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title> Login Form </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'style2.css' %}">
+	
+
+<body>
+	<div class=loginbox>
+		<img src="{% static 'avatar.png' %}" class="avatar">  
+		<h1>Login Here</h1>
+			{% csrf_token %}
+			<p>Username</p>
+			<input type="text" name="uname" placeholder="Enter Username">
+			<p>Password</p>
+			<input type="Password" name="pass" placeholder="Enter Password">
+			<input type="submit" name="" value="login">
+			<a href="#">Lost your password?</a><br>
+			<a href="http://127.0.0.1:8000/register">Don't have an account?</a><br>
+</div>
+</body>
+</head>
+</html>
+ {% comment %}  UserName :<input type="text" , name="uname"> <br>
+   Password :<input type="Password" , name="pass"> <br>
+ {% endcomment %}
+    
+</form>
+
+<div>
+    <center> {% for message in messages %}
+				<h2  style = "color  : red" >  {{message}} </h2>
+      {% endfor %}
+    </center>
+</div>
+{% endblock %}

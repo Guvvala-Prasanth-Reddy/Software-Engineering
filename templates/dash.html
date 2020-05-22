@@ -1,0 +1,76 @@
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet"  href="{% static 'dash.css' %}">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+{% block content %}
+<body>
+	<section id="sidemenu">
+	<a href="#"><img src="{% static 'adharva_t.png' %}" height="280"></a>
+	{% if user.is_authenticated  %}
+	<ul>
+		<li><a href="/dash"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+		<li><a class="branch-btn"><i class="fa fa-book" aria-hidden="true"></i>Branch<span class="fa fa-caret-down"></span></a>
+			{% with 'CSE ECE MECH EEE' as list %}
+			{% with 'course/' as base %}
+			<ul>
+				{% for i in list.split %}
+				<li><a><i class="fa fa-file-text-o" aria-hidden="true"></i>{{i}}</a>
+					<ul id="cs">
+						{% for j in '12345678' %}
+						<li><a href="{{base}}{{i}}/{{j}}/">S{{j}}</a></li>
+						{% endfor %}
+					</ul>    
+				</li>
+			{% endfor %}
+			</ul>
+		</li>
+		{% endwith %}
+		{% endwith %}
+		
+			{% if not user.is_superuser %}
+			<li><a href="/specialaccess/{{user.username}}"><i class="fa fa-user-secret" aria-hidden="true"></i>Special-User Request</a></li>
+			{% endif %}	
+			{% if user.is_staff %}
+			<li><a href="showrequests/{{user.username}}"><i class="fa fa-user-secret" aria-hidden="true"></i>Show Requests</a></li>
+			{% endif %}
+
+			<li><a href="logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+			
+	</ul>
+	</section>
+	<header>
+		<div class="search-area">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" name="" value="">
+        </div>
+	</header>
+	<div class="card">
+        <div class="img-area">
+            <img src="{% static 'img.png' %}" alt="John" style="width:100%">
+        </div>
+        <p><button>Welcome</button></p>
+        <h1 style="color: beige;font-size: x-larger;font-family: sans-serif;">{{user.first_name}}</h1>
+	  </div>
+	  
+	{% else  %}
+		<ul>
+			<li><a href="/login"><i class="fa fa-home" aria-hidden="true"></i>Login</a></li>
+			<li><a class="/register"><i class="fa fa-book" aria-hidden="true"></i>Register</a></li>
+		</ul>
+
+	{% endif %}		
+</body>
+</html>
+{% endblock %}
