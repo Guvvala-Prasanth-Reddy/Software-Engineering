@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'star_ratings',
+    'crispy_forms'
     
 ]
 
@@ -136,3 +137,6 @@ EMAIL_HOST_USER     = 'smtpadharva@gmail.com'
 EMAIL_HOST_PASSWORD = 'Abcd@1234'
 EMAIL_USE_TLS       = True
 EMAIL_PORT          = 587
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
