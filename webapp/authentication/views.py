@@ -11,7 +11,7 @@ from .utils import generate_token
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.views import View
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -29,8 +29,12 @@ def login(request):
         password    = request.POST['pass']
         user        = auth.authenticate(username=username,password=password)
         if( user is not None ):
-            auth.login(request,user)
-            return redirect('dash')
+            if(user.is_active):
+                auth.login(request,user)
+                return redirect('dash')
+            else:
+                messages.info(request,'Invalid Credentials')
+                return redirect('login')
         else:
             messages.info(request,'Invalid Credentials')
             return redirect('login')
@@ -54,7 +58,7 @@ def register(request):
                 messages.info(request,'user name exists')
                 return redirect('register')
             else:
-                user = User.objects.create_user(username = username , password = password1 , email = email , first_name = first_name , last_name = last_name)
+                user = User.objects.create_user(username = username , password = password1 , email = email , first_name = first_name , last_name = last_name,is_active=False)
                 user.save()
                 current_site=get_current_site(request)
                 email_subject='Activate your Adharva Account'
@@ -89,8 +93,8 @@ def specialuser(request):
 def show_requests(request):
     d = request.path.split('/')
     print(d[-1])
-    resp = User.objects.filter(username = d)
-    if( resp.values('is_staff') ): 
+    resp = User.objects.filter(Q(username = d)&Q(is_staff=True))
+    if(resp is not None): 
         data = speical_user_access.objects.all()
         dat = []
         for i in data:
