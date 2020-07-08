@@ -27,7 +27,6 @@ Webapp using Django
 						* python manage.py migrate
 						* python manage.py runserver [ It starts the server on the port 5432 and address is the local host adddress i.e 127.0.0.1 ]
 
-## The credentials for the project email will be shared in the whatsapp group ##
 
 ## Kindly look through the requiremtents.txt ##
 To cross check whether all of them are installed in your virtualenv run "pip freeze > requirements.txt" inside the venv and cross check the installed modules 
