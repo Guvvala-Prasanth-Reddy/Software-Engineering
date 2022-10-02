@@ -1,4 +1,4 @@
-# Software-Engineering
+# Software-Engineering Project
 Webapp using Django 
 ## Inorder to safely run the webapp few variables have to be set in webapp/webapp/settings.py  module ##
 
